@@ -1,0 +1,97 @@
+1    aws ec2 create-vpc --cidr-block 10.0.0.0/16
+     aws ec2 create-vpc --cidr-block 10.0.0.0/16 --instance-tenancy dedicated (with specific name).
+  
+
+2     aws ec2 create-subnet --vpc-id vpc-a01106c2 --cidr-block 10.0.1.0/24 (subnet wit vpc create n number of subnets)
+
+ ##"subnet-02897043903026fbb"
+
+aws ec2 create-subnet --vpc-id vpc-08bf14c477b0f5074 --cidr-block 10.0.5.0/24 --availability-zone "us-west-2c"
+##SubnetId": "subnet-0c22d5f0400f6217e"
+
+
+aws ec2 create-subnet --vpc-id vpc-08bf14c477b0f5074 --cidr-block 10.0.6.0/24 --availability-zone "us-west-2d"
+##"SubnetId": "subnet-0fe3ebb5c76c95d8e"
+
+3     aws ec2 create-security-group --group-name MySecurityGroup --description "My security group" --vpc-id vpc-1a2b3c4d (with specfic vpc)
+
+4     aws ec2 create-internet-gateway (igw) 
+
+5     aws ec2 attach-internet-gateway --internet-gateway-id igw-c0a643a9 --vpc-id vpc-a01106c2      (attach igw to vpc)
+
+6     aws ec2 create-route --route-table-id rtb-22574640 --destination-cidr-block 0.0.0.0/0 --gateway-id igw-c0a643a9    (route) 
+
+7     aws ec2 create-route-table --vpc-id vpc-a01106c2   (route table with vpc)
+]#
+8     aws ec2 associate-route-table --route-table-id rtb-22574640 --subnet-id subnet-9d4a7b6c  (associate routetable to subnet)
+   
+9   aws ec2 run-instances --image-id ami-xxxxxxxx --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-903004f8 --subnet-id subnet-6e7f829e
+
+
+
+rtb-0b024f07bb95d020b
+
+
+aws ec2 run-instances --image-id ami-005bdb005fb00e791 --count 1 --instance-type t2.micro --key-name myname --security-group-ids sg-0efd7142d2b9078c1 --subnet-id subnet-03389f4e1136cae93
+
+
+
+
+
+
+
+
+
+
+
+
+
+aws ec2 associate-route-table --route-table-id "rtb-0318f6c80a04c8d3b" --subnet-id "subnet-02897043903026fbb"
+## "AssociationId": "rtbassoc-0fd0451ca10c3663f" (1)
+
+
+aws ec2 associate-route-table --route-table-id "rtb-0318f6c80a04c8d3b" --subnet-id "subnet-0c22d5f0400f6217e"
+
+## "AssociationId": "rtbassoc-0121d958f1a82d1df" (1)
+
+
+
+## "AssociationId": "rtbassoc-050c3ae4bbf3e6ee8"  
+
+##  "AssociationId": "rtbassoc-09e630af3dbfd4be1"
+
+
+
+
+aws ec2 authorize-security-group-ingress --group-name MySecurityGroup --protocol tcp --port 22 --cidr 203.0.113.0/24
+
+
+ aws ec2 run-instances --image-id ami-005bdb005fb00e791 --instance-type t2.micro --key-name myname  --network-interfaces '[{ "DeviceIndex": 0, "AssociatePublicIpAddress": true, "Groups":["sg-0efd7142d2b9078c1"], "SubnetId":"subnet-03389f4e1136cae93"}]'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
